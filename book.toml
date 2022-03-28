@@ -1,0 +1,6 @@
+[book]
+authors = ["andylii"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Exodus Model Template Documentation"
