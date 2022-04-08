@@ -36,11 +36,18 @@ The class `TrainIIDReqBody` is defined in the `exodusutils` library, and contain
 ```python
 class TrainIIDReqBody(TrainReqBodyBase):
 # ... snipped ...
+    validation_data: Optional[bytes] = Field(
+        default=None, description="The validation data as a sequence of bytes. Optional"
+    )
     holdout_data: Optional[bytes] = Field(
         default=None, description="The holdout data as a sequence of bytes. Optional"
     )
+    fold_assignment_column_name: Optional[str] = Field(
+        default=None,
+        description="The name of the fold assignment column. If not provided, Exodus will cut cross validation folds in a modulo fashion. If this field is defined, it is required to be a valid column in the input dataframe. This column is not included in `feature_types`, and will be discarded during training.",
+    )
 ```
-There seems to be only one field, however the `TrainIIDReqBody` class actually inherits from the `TrainReqBodyBase` class:
+There seems to be only three fields, however the `TrainIIDReqBody` class actually inherits from the `TrainReqBodyBase` class:
 ```python
 class TrainReqBodyBase(BaseModel):
 # ... snipped ...
@@ -53,9 +60,6 @@ class TrainReqBodyBase(BaseModel):
     )
     folds: int = Field(
         default=5, ge=2, le=10, description="Number of folds for this experiment"
-    )
-    validation_percentage: float = Field(
-        default=0.0, ge=0.0, lt=1.0, description="The validation percentage"
     )
 ```
 

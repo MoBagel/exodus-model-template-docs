@@ -59,8 +59,8 @@ After we decide which algorithm to use, we can fit the model, and then return it
 
 Most of the code here should be changed by you. In particular these are the things you need to consider:
 - Perhaps your machine learning algorithm is able to handle both classification and regression problems
-- Your model needs to filter out some more features
-- Instead of `fit`, your model needs to do something else
-- Your model requires a validation dataframe, which can be retreived via `train_frames.validation`
+- Your model might need to filter out some more features
+- Instead of `fit`, your model might need to do something else
+- Your model might require a validation dataframe, which can be retreived via `train_frames.validation`
 
 Either way, the content of this function should only serve as an example, it is up to you to decide what should actually be the machine learning model.

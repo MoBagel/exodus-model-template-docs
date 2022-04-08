@@ -25,7 +25,7 @@ Here's the `train_iid` method in its entirety (sans comments):
         # CROSS VALIDATION #
 
         cv_frames = CVFrames.iid(
-            training_df, request.folds, request.validation_percentage
+            training_df, request.folds, request.get_validation_data()
         )
 
         folds = [
@@ -36,9 +36,7 @@ Here's the `train_iid` method in its entirety (sans comments):
 
         # TRAIN THE MODEL #
 
-        train_frames = TrainFrames.iid_without_test(
-            training_df, request.validation_percentage
-        )
+        train_frames = TrainFrames(train=training_df, validation=request.get_validation_data())
         model = train_model(train_frames, request.target)
 
         # HOLDOUT #

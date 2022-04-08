@@ -25,6 +25,9 @@ Here's the `predict` method in its entirety (sans comments):
 
         # FORMATING RESULTS #
 
+        if model_info.target.data_type != DataType.double:
+            predicted = model_info.encoders[model_info.target.name].inverse_transform(predicted)
+
         sanitized_df[PREDICTION_COLNAME] = predicted
 
         if model_info.target.data_type != DataType.double:
@@ -32,7 +35,7 @@ Here's the `predict` method in its entirety (sans comments):
                 raise RuntimeError(
                     f"Got {model_info.model.__class__} when it should be LogisticRegression"
                 )
-            classes = list(model_info.model.classes_)
+            classes = list(model_info.encoders[model_info.target.name].classes_)
             predict_proba = pd.DataFrame(
                 model_info.model.predict_proba(features), columns=classes
             )

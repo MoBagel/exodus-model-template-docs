@@ -10,7 +10,7 @@ The corresponding code is the following snippet:
 ```python
         # Cut the training dataframe into cross-validation frames
         cv_frames = CVFrames.iid(
-            training_df, request.folds, request.validation_percentage
+            training_df, request.folds, request.get_validation_data()
         )
 
         # Use the cross-validation frames to calculate the cv scores

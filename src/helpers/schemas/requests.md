@@ -7,12 +7,14 @@ Fields:
 - `feature_types`: the columns in the training data.
 - `target`: the target `Column`.
 - `folds`: the number of folds during cross validation.
-- `validation_percentage`: the percentage of rows to be used as validation set during training.
+- `validation_data`: the optional raw bytes representing the validation data. Should not be accessed directly.
 - `holdout_data`: the optional raw bytes representing the holdout data. Should not be accessed directly.
+- `fold_assignment_column`: an optional field denoting a column representing the fold that each row belongs to. If empty, `exodusutils` will cut the cv folds by taking the modulo by `folds` to the row indices.
 
 Methods:
 - `get_feature_names`: returns the names of the columns.
 - `get_training_df`: returns the parsed pandas `DataFrame` generated from the bytes in `training_data`. Note that the data types of the columns will correspond to the ones specified in `feature_types`.
+- `get_validation_data`: returns the parsed pandas `DataFrame` generated from the bytes in `validation_data`, or `None` if there's no validation data.
 - `get_holdout_data`: returns the parsed pandas `DataFrame` generated from the bytes in `holdout_data`, or `None` if there's no holdout data.
 
 ## `PredictReqBody`

@@ -31,6 +31,7 @@ Poe => PORT=${port} docker-compose up --build -d
 Successfully built a60ab63716b1
 Successfully tagged exodus_model_template_exodus_model_template:latest
 Creating exodus_model_template_exodus_model_template_1 ... done
+Creating exodus_model_template_web_app_1               ... done
 Creating exodus_model_template_mongo_1                 ... done
 ```
 
@@ -40,6 +41,10 @@ You can send a request to the model algorithm container to see if it is working:
 ❯ curl "http://localhost:5566/info"
 {"name": "exodus_model_template", "description": "description"}
 ```
+
+## Using the webapp to test out the model algorithm
+
+If you go to `http://localhost:3000`, you will see a web page that allows you to test out the model algorithm. Select a CSV file, upload it and select the proper feature types, and then click `Train Model`. For predicting with a model, type in the model id, upload a CSV file for prediction, and then press `Predict`.
 
 ## Watching the model algorithm service
 
