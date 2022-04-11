@@ -56,6 +56,7 @@
   - [Feature engineering](helpers/feature_engineering.md)
   - [Frame manipulation](helpers/frame_manipulation.md)
   - [Miscellaneous](helpers/misc.md)
+  - [How to update `exodusutils`](helpers/updating.md)
 - [Appendix B: How cross validation scores are calculated](cv_scores.md)
 - [Appendix C: How to change MongoDB settings](mongo.md)
 - [Appendix D: How to view the API docs](api_docs.md)
