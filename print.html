@@ -1,0 +1,1601 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exodus Model Template Documentation</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="dependencies.html"><strong aria-hidden="true">2.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setup the model template</a></li><li class="chapter-item expanded "><a href="run.html"><strong aria-hidden="true">4.</strong> Run the model template</a></li><li class="chapter-item expanded "><a href="how_to.html"><strong aria-hidden="true">5.</strong> How to create your own model algorithm</a></li><li class="chapter-item expanded "><a href="how_to/implementation.html"><strong aria-hidden="true">6.</strong> Implementing the model algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/dependencies.html"><strong aria-hidden="true">6.1.</strong> Adding or removing dependency libraries</a></li><li class="chapter-item expanded "><a href="how_to/implementation/setup.html"><strong aria-hidden="true">6.2.</strong> Setting up the editor</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/setup/vim.html"><strong aria-hidden="true">6.2.1.</strong> Vim</a></li><li class="chapter-item expanded "><a href="how_to/implementation/setup/vs_code.html"><strong aria-hidden="true">6.2.2.</strong> VSCode</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/implementation/training.html"><strong aria-hidden="true">6.3.</strong> Train a model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/training/sanitizing.html"><strong aria-hidden="true">6.3.1.</strong> Sanitize input</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering.html"><strong aria-hidden="true">6.3.2.</strong> Feature engineering</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering/label_encoding.html"><strong aria-hidden="true">6.3.2.1.</strong> Label encoding</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering/time_component_encoding.html"><strong aria-hidden="true">6.3.2.2.</strong> Time component encoding</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering/remove_datetime_columns.html"><strong aria-hidden="true">6.3.2.3.</strong> Remove datetime columns</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering/holdout.html"><strong aria-hidden="true">6.3.2.4.</strong> Handle holdout dataframe</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/feature_engineering/one_hot_encoding.html"><strong aria-hidden="true">6.3.2.5.</strong> One-hot encoding</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/implementation/training/labels.html"><strong aria-hidden="true">6.3.3.</strong> Extract unique labels</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/cv.html"><strong aria-hidden="true">6.3.4.</strong> Calculate cross validation scores</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/train.html"><strong aria-hidden="true">6.3.5.</strong> Train the machine learning model</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/score.html"><strong aria-hidden="true">6.3.6.</strong> Calculate a single set of scores</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/saving.html"><strong aria-hidden="true">6.3.7.</strong> Save a model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/training/saving/scikit-learn.html"><strong aria-hidden="true">6.3.7.1.</strong> Saving scikit-learn stuff</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/saving/model_info.html"><strong aria-hidden="true">6.3.7.2.</strong> Creating ModelInfo instance</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/saving/encrypt.html"><strong aria-hidden="true">6.3.7.3.</strong> Encrypting &amp; saving the ModelInfo</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/implementation/training/results.html"><strong aria-hidden="true">6.3.8.</strong> Return the results</a></li><li class="chapter-item expanded "><a href="how_to/implementation/training/done.html"><strong aria-hidden="true">6.3.9.</strong> Piecing it together</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting.html"><strong aria-hidden="true">6.4.</strong> Predicting with a trained model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/implementation/predicting/load.html"><strong aria-hidden="true">6.4.1.</strong> Load a model</a></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting/sanitizing.html"><strong aria-hidden="true">6.4.2.</strong> Sanitize input</a></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting/feature_engineering.html"><strong aria-hidden="true">6.4.3.</strong> Apply feature engineering</a></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting/predict.html"><strong aria-hidden="true">6.4.4.</strong> Predict</a></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting/format.html"><strong aria-hidden="true">6.4.5.</strong> Format the results</a></li><li class="chapter-item expanded "><a href="how_to/implementation/predicting/done.html"><strong aria-hidden="true">6.4.6.</strong> Piecing it together</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="how_to/testing.html"><strong aria-hidden="true">7.</strong> Testing the model algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/testing/unit_tests.html"><strong aria-hidden="true">7.1.</strong> Running unit tests</a></li><li class="chapter-item expanded "><a href="how_to/testing/debugging.html"><strong aria-hidden="true">7.2.</strong> Debugging the model algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/testing/debugging/deployed.html"><strong aria-hidden="true">7.2.1.</strong> Debugging the deployed model algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/testing/landing_page.html"><strong aria-hidden="true">7.3.</strong> Using the landing page</a></li></ol></li><li class="chapter-item expanded "><a href="how_to/publishing.html"><strong aria-hidden="true">8.</strong> Publishing the model algorithm</a></li><li class="chapter-item expanded "><a href="how_to/modifying.html"><strong aria-hidden="true">9.</strong> Modifying the model algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how_to/modifying/migration.html"><strong aria-hidden="true">9.1.</strong> Migrating the ModelInfo</a></li><li class="chapter-item expanded "><a href="how_to/modifying/versioning.html"><strong aria-hidden="true">9.2.</strong> Bumping the version</a></li></ol></li><li class="chapter-item expanded "><a href="helpers.html"><strong aria-hidden="true">10.</strong> Appendix A: Helper functions and classes in exodusutils</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="helpers/enums.html"><strong aria-hidden="true">10.1.</strong> Enums</a></li><li class="chapter-item expanded "><a href="helpers/constants.html"><strong aria-hidden="true">10.2.</strong> Constants</a></li><li class="chapter-item expanded "><a href="helpers/schemas.html"><strong aria-hidden="true">10.3.</strong> Schemas</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="helpers/schemas/requests.html"><strong aria-hidden="true">10.3.1.</strong> Requests</a></li><li class="chapter-item expanded "><a href="helpers/schemas/scores.html"><strong aria-hidden="true">10.3.2.</strong> Scores</a></li></ol></li><li class="chapter-item expanded "><a href="helpers/exceptions.html"><strong aria-hidden="true">10.4.</strong> Exceptions</a></li><li class="chapter-item expanded "><a href="helpers/frames.html"><strong aria-hidden="true">10.5.</strong> Frames</a></li><li class="chapter-item expanded "><a href="helpers/feature_engineering.html"><strong aria-hidden="true">10.6.</strong> Feature engineering</a></li><li class="chapter-item expanded "><a href="helpers/frame_manipulation.html"><strong aria-hidden="true">10.7.</strong> Frame manipulation</a></li><li class="chapter-item expanded "><a href="helpers/misc.html"><strong aria-hidden="true">10.8.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="helpers/updating.html"><strong aria-hidden="true">10.9.</strong> How to update exodusutils</a></li></ol></li><li class="chapter-item expanded "><a href="cv_scores.html"><strong aria-hidden="true">11.</strong> Appendix B: How cross validation scores are calculated</a></li><li class="chapter-item expanded "><a href="mongo.html"><strong aria-hidden="true">12.</strong> Appendix C: How to change MongoDB settings</a></li><li class="chapter-item expanded "><a href="api_docs.html"><strong aria-hidden="true">13.</strong> Appendix D: How to view the API docs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Exodus Model Template Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This package is the template for creating a new Exodus IID model algorithm. Your goal as a developer is to implement your own model algorithm using this package.</p>
+<h2 id="what-is-a-model-algorithm"><a class="header" href="#what-is-a-model-algorithm">What is a model algorithm?</a></h2>
+<p>A model algorithm in the Exodus project is a service that can train a machine learning model, persist the trained model, fetch the persisted model from MongoDB, and finally predict using the persisted model.</p>
+<h2 id="how-do-i-read-this-documentation"><a class="header" href="#how-do-i-read-this-documentation">How do I read this documentation?</a></h2>
+<pre><code class="language-bash">cd books; python -m http.server
+</code></pre>
+<p>Then visit <code>http://localhost:8000</code> in your browser.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h1>
+<ul>
+<li>Python 3.8+</li>
+<li><a href="https://python-poetry.org/">Poetry</a>
+<ul>
+<li>A packaging and dependency management tool for Python.</li>
+<li>Install with:
+<pre><code class="language-bash">curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+</code></pre>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/nat-n/poethepoet">Poethepoet</a>
+<ul>
+<li>A task runner that works well with poetry.</li>
+<li>Install with:
+<pre><code class="language-bash">pip install poethepoet
+</code></pre>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/uiri/toml">Python TOML library</a>
+<ul>
+<li>The TOML library for Python.</li>
+<li>Install with:
+<pre><code class="language-bash">pip install toml
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setup-the-model-template"><a class="header" href="#setup-the-model-template">Setup the model template</a></h1>
+<p>The model template comes with a fully functional model that can do training and predicting, albeit with rather poor predicting capability.
+To setup the model template, several steps are necessary:</p>
+<ol>
+<li>Renaming the model template package</li>
+<li>Installing dependency libraries</li>
+</ol>
+<h2 id="renaming-the-package"><a class="header" href="#renaming-the-package">Renaming the package</a></h2>
+<p>When you get the package, it will be named as <code>exodus_model_template</code>, which is most definitely not the
+name for the model algorithm you are going to build. To rename the entire package, run the renaming script:</p>
+<pre><code class="language-bash">python scripts/rename.py [NAME_OF_THE_MODEL]
+</code></pre>
+<h2 id="installing-dependency-libraries"><a class="header" href="#installing-dependency-libraries">Installing dependency libraries</a></h2>
+<p>To install the dependency libraries, enter the following command (assuming you've already installed the packages specified in the <code>Dependencies</code> section):</p>
+<pre><code class="language-bash">poetry install --no-root
+</code></pre>
+<p>This command will install all the dependency libraries for you.</p>
+<h3 id="the-libraies"><a class="header" href="#the-libraies">The libraies</a></h3>
+<p>The model algorithm template depends on several libraries, the ones that are used extensively are:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">pandas</a>: the de-facto go-to data analysis package for Python. We are using v1.4.0.
+<ul>
+<li>Note that <code>pandas</code> artifacts such as <code>DataFrame</code> are not backward compatible. Think it through if you want to bump its version.</li>
+</ul>
+</li>
+<li><a href="https://numpy.org/">numpy</a>: Python's math libaray. We are using v1.21.0.</li>
+<li><a href="https://scikit-learn.org/">scikit-learn</a>: the machine learning Swiss knife library. Currently only the <code>LabelEncoder</code> class is used. We are using v1.0.2.
+<ul>
+<li>Note that <code>scikit-learn</code> artifacts such as <code>LabelEncoder</code> are not backward compatible. Think it through if you want to bump its version.</li>
+</ul>
+</li>
+<li><a href="https://pymongo.readthedocs.io/en/stable/">pymongo</a>: the MongoDB Python client library.</li>
+<li><a href="https://jinja.palletsprojects.com/">jinja2</a>: a templating tool for Python. Used for generating migration scripts.</li>
+<li><a href="https://fastapi.tiangolo.com/">fastapi</a>: the web framework we chose to run the model algorithm service on. We are using v0.14.1.</li>
+<li><a href="https://pydantic-docs.helpmanual.io/">pydantic</a>: the data validation library for Python classes. We are using v.1.9.0.</li>
+<li><a href="https://pypi.org/project/exodusutils/">exodusutils</a>: the utility functions for Exodus. The version of this package is subject to change.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="run-the-model-template"><a class="header" href="#run-the-model-template">Run the model template</a></h1>
+<p>As mentioned previously, the model algorithm template contains a fully functional model algorithm that can be used to train and predict. To see it in action, we have defined several commands.</p>
+<h2 id="the-commands"><a class="header" href="#the-commands">The commands</a></h2>
+<p>For the list of available commands, simply enter:</p>
+<pre><code class="language-bash">poe --help
+</code></pre>
+<p><img src="images/setup.png" alt="" /></p>
+<h2 id="run-the-model-algorithm-service"><a class="header" href="#run-the-model-algorithm-service">Run the model algorithm service</a></h2>
+<pre><code class="language-bash">poe start
+
+# Or if you want to specify a port:
+#poe start --port [PORT]
+</code></pre>
+<p>This command will start a MongoDB container and a model algorithm container. By default the model algorithm container can be accessed through <code>http://localhost:5566/</code>, but you can designate a port to the command.</p>
+<pre><code class="language-bash">❯ poe start
+Poe =&gt; PORT=${port} docker-compose up --build -d
+
+# ... snipped ...
+
+Successfully built a60ab63716b1
+Successfully tagged exodus_model_template_exodus_model_template:latest
+Creating exodus_model_template_exodus_model_template_1 ... done
+Creating exodus_model_template_web_app_1               ... done
+Creating exodus_model_template_mongo_1                 ... done
+</code></pre>
+<p>You can send a request to the model algorithm container to see if it is working:</p>
+<pre><code class="language-bash">❯ curl &quot;http://localhost:5566/info&quot;
+{&quot;name&quot;: &quot;exodus_model_template&quot;, &quot;description&quot;: &quot;description&quot;}
+</code></pre>
+<h2 id="using-the-webapp-to-test-out-the-model-algorithm"><a class="header" href="#using-the-webapp-to-test-out-the-model-algorithm">Using the webapp to test out the model algorithm</a></h2>
+<p>If you go to <code>http://localhost:3000</code>, you will see a web page that allows you to test out the model algorithm. Select a CSV file, upload it and select the proper feature types, and then click <code>Train Model</code>. For predicting with a model, type in the model id, upload a CSV file for prediction, and then press <code>Predict</code>.</p>
+<h2 id="watching-the-model-algorithm-service"><a class="header" href="#watching-the-model-algorithm-service">Watching the model algorithm service</a></h2>
+<pre><code class="language-bash">poe watch
+</code></pre>
+<p>If you do this while the service is down, the command will have no effect.</p>
+<h2 id="stoping-the-model-algorithm-service"><a class="header" href="#stoping-the-model-algorithm-service">Stoping the model algorithm service</a></h2>
+<pre><code class="language-bash">poe stop
+</code></pre>
+<pre><code class="language-bash">❯ poe stop
+Poe =&gt; PORT=$(python scripts/stop.py);
+  if test $? -eq 0; then PORT=$PORT docker-compose down; else echo &quot;No container running, not stopping anything&quot;; fi
+Stopping exodus_model_template_mongo_1                 ... done
+Stopping exodus_model_template_exodus_model_template_1 ... done
+Removing exodus_model_template_mongo_1                 ... done
+Removing exodus_model_template_exodus_model_template_1 ... done
+Removing network exodus_model_template_default
+</code></pre>
+<p>If you do this while the service is down, the command will have no effect.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-create-your-own-model-algorithm"><a class="header" href="#how-to-create-your-own-model-algorithm">How to create your own model algorithm</a></h1>
+<p>This section will walk you through the process of creating a model algorithm from the ground up. More accurately, it will describe the following processes:</p>
+<ol>
+<li>Implementing a model algorithm
+<ol>
+<li>How to manage dependencies</li>
+<li>How to setup the editor</li>
+<li>How to train a model</li>
+<li>How to persist the model in MongoDB</li>
+<li>How to predict using a previously trained model</li>
+</ol>
+</li>
+<li>Testing the model algorithm
+<ol>
+<li>Using the landing page</li>
+<li>Using command line tools</li>
+<li>Debugging the model algorithm</li>
+<li>Running unit tests to ensure the correctness of some basic operations</li>
+</ol>
+</li>
+<li>Publishing your model algorithm</li>
+<li>Modifying the model algorithm
+<ol>
+<li>Migrating the <code>ModelInfo</code></li>
+<li>Bumping the version</li>
+</ol>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="implementing-the-model-algorithm-service"><a class="header" href="#implementing-the-model-algorithm-service">Implementing the model algorithm service</a></h1>
+<p>This section will walk you through implementing the model algorithm service.</p>
+<p>The model algorithm template already contains a working example. For the rest of the documentation, we will be using that to demonstrate the process.</p>
+<p>The only files you should modify in theory are those two:</p>
+<ul>
+<li><code>model_algorithm.py</code>, which contains the actual model training, persisting and predicting.</li>
+<li><code>model_info.py</code>, which defines the schema of the model you are persisting into MongoDB.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-or-removing-dependency-libraries"><a class="header" href="#adding-or-removing-dependency-libraries">Adding or removing dependency libraries</a></h1>
+<p>Before you start creating your own model, you need to install some machine learning libraries that contain the algorithms you will be using. <code>poetry</code>, the package manager we are using for this project, actually comes with a neat virtual environment right out of the box, so you do not need to worry about messing up your host environment.</p>
+<p>Take our model algorithm template for example. We decided to use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html"><code>Linear Regression</code></a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><code>Logistic Regression</code></a> as our machine learning algorithm (there are 2 of them because <code>Linear Regression</code> only handles regression problems, while <code>Logistic Regression</code> only handles categorical ones). These algorithms can be found as a part of the <a href="https://scikit-learn.org/stable/index.html"><code>scikit-learn</code></a> package, so that's what we installed for this example.</p>
+<h2 id="adding-a-dependency-library"><a class="header" href="#adding-a-dependency-library">Adding a dependency library</a></h2>
+<p>To install the <code>scikit-learn</code> package and add it to the dependency libraries, simply do the following:</p>
+<pre><code class="language-bash">poetry add scikit-learn
+</code></pre>
+<p>The above command does not specify a version for the package, so <code>poetry</code> will just use the newest one that is compatible with all the other packages we've listed as dependencies. If you want to use the latest version:</p>
+<pre><code class="language-bash">poetry add scikit-learn@latest
+</code></pre>
+<p>Or if you want to stick to a specific version:</p>
+<pre><code class="language-bash">poetry add scikit-learn@1.0.2
+</code></pre>
+<h2 id="removing-a-dependency-library"><a class="header" href="#removing-a-dependency-library">Removing a dependency library</a></h2>
+<p>Suppose instead of those machine learning algorithms, you decided that you want to use something else. The <code>scikit-learn</code> package contains the <code>LabelEncoder</code> class, which we based one of our feature engineering methods (you will know more about this later!) on, so it does not make sense to remove the library from your dependencies.</p>
+<p><strong>The below is only an example and should not actually be run</strong>, but suppose you want to remove <code>scikit-learn</code>:</p>
+<pre><code class="language-bash">poetry remove scikit-learn
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-the-editor"><a class="header" href="#setting-up-the-editor">Setting up the editor</a></h1>
+<p>In this section we will talk about how to setup an editor, so that it is easier to make your own model algorithm service.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vim"><a class="header" href="#vim">Vim</a></h1>
+<p>If you are a hardcore coder, chances are you already know how to use Vim?</p>
+<h2 id="packages-to-use"><a class="header" href="#packages-to-use">Packages to use</a></h2>
+<h3 id="neovim"><a class="header" href="#neovim">NeoVim</a></h3>
+<p><a href="https://neovim.io/">NeoVim</a> provides much better editing experience than vanilla Vim.</p>
+<h3 id="conquer-of-code"><a class="header" href="#conquer-of-code">Conquer of Code</a></h3>
+<p><a href="https://github.com/neoclide/coc.nvim">CoC</a> lets you look up definition, autocomplete, and stuff. It uses different language servers under the hood.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vscode"><a class="header" href="#vscode">VSCode</a></h1>
+<p><a href="https://code.visualstudio.com/">VSCode</a> is a modern editor that is extremely expandable.</p>
+<h2 id="basic-usage"><a class="header" href="#basic-usage">Basic usage</a></h2>
+<p>To open a VSCode session, navigate to the model algorithm template directory, and run the following command:</p>
+<pre><code class="language-bash">code .
+</code></pre>
+<p>This starts a VSCode session.</p>
+<p>If you are not familiar with coding, going through <a href="https://code.visualstudio.com/docs/python/python-tutorial">the official VSCode Python tutorial docs</a> is a good idea.</p>
+<p>VSCode can recognize <code>poetry</code> environments, so make sure you select the appropriate Python interpreter (i.e. the one with your model algorithm's name in it).</p>
+<h2 id="basic-hotkeys"><a class="header" href="#basic-hotkeys">Basic hotkeys</a></h2>
+<ul>
+<li>To expand / collapse the sidebar, press <code>ctrl+b</code>.</li>
+<li>To open a file, you can press <code>ctrl+p</code>.</li>
+<li>To type in a VSCode command, press <code>ctrl+shift+p</code>.</li>
+<li>To start a terminal session, press <code>ctrl+shift+` </code>.</li>
+</ul>
+<h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a>
+<ul>
+<li>The official extension for Python language support.</li>
+<li>Once you've installed it, remember to also activate <code>pylance</code>, the type checker extension for Python language.</li>
+</ul>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent">Python Indent</a>
+<ul>
+<li>The extension that handles indents correctly. I do not know why it is not part of the official extension, but this extension is the one that handles everything correctly.</li>
+</ul>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a>
+<ul>
+<li>Makes writing comments for your algorithm that much easier.</li>
+</ul>
+</li>
+</ul>
+<h2 id="screenshot"><a class="header" href="#screenshot">Screenshot</a></h2>
+<p><img src="how_to/implementation/setup/images/setup_1.png" alt="" /></p>
+<p><img src="how_to/implementation/setup/images/setup_2.png" alt="" /></p>
+<p>If everthing is wired up correctly, you should be able to see code definitions when your mouse is on top of an imported method or class, and there should be no unknown imports.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="train-a-model"><a class="header" href="#train-a-model">Train a model</a></h1>
+<p>In order to train a machine learning model and obtain its performance metrics, we will be doing the following procedure:</p>
+<ol>
+<li>Sanitize the training input</li>
+<li>Perform feature engineering</li>
+<li>Extract labels for categorical problems</li>
+<li>Calculate cross validation scores</li>
+<li>Train the machine learning model</li>
+<li>Calculate holdout score</li>
+<li>Save the model</li>
+<li>Return the result</li>
+</ol>
+<p>All of the code is in the files <code>model_algorithm.py</code> and <code>model_info.py</code>.</p>
+<p>To start things off, let's modify the description of your model algorithm:</p>
+<pre><code class="language-python">class ModelAlgorithm:
+    def __init__(self, host: Optional[str] = None, port: Optional[str] = None) -&gt; None:
+# ... snipped ...
+        self.description: str = &quot;description&quot; # TODO Change me!
+</code></pre>
+<p>After you've figured out the description of your model algorithm, you can start implementing the <code>train_iid</code> method, the entrypoint for training an IID model.</p>
+<pre><code class="language-python">    def train_iid(self, request: TrainIIDReqBody) -&gt; TrainRespBody:
+</code></pre>
+<p>If you enter a newline underneath the comments, and insert <code>request.</code>, there should be a lot of autocomplete suggestions:
+<img src="how_to/implementation/images/training_1.png" alt="" /></p>
+<p>The class <code>TrainIIDReqBody</code> is defined in the <code>exodusutils</code> library, and contains a myriad of helper methods and variables. If we right click on the <code>TrainIIDReqBody</code> symbol, and select <code>Go to definition</code>, we will be able to see what's in it:
+<img src="how_to/implementation/images/training_2.png" alt="" /></p>
+<pre><code class="language-python">class TrainIIDReqBody(TrainReqBodyBase):
+# ... snipped ...
+    validation_data: Optional[bytes] = Field(
+        default=None, description=&quot;The validation data as a sequence of bytes. Optional&quot;
+    )
+    holdout_data: Optional[bytes] = Field(
+        default=None, description=&quot;The holdout data as a sequence of bytes. Optional&quot;
+    )
+    fold_assignment_column_name: Optional[str] = Field(
+        default=None,
+        description=&quot;The name of the fold assignment column. If not provided, Exodus will cut cross validation folds in a modulo fashion. If this field is defined, it is required to be a valid column in the input dataframe. This column is not included in `feature_types`, and will be discarded during training.&quot;,
+    )
+</code></pre>
+<p>There seems to be only three fields, however the <code>TrainIIDReqBody</code> class actually inherits from the <code>TrainReqBodyBase</code> class:</p>
+<pre><code class="language-python">class TrainReqBodyBase(BaseModel):
+# ... snipped ...
+    training_data: bytes = Field(description=&quot;The training data as a sequence of bytes&quot;)
+    feature_types: List[Column] = Field(
+        default=[], description=&quot;The features present in training data&quot;
+    )
+    target: Column = Field(
+        description=&quot;The target column. Must be present in feature_types&quot;
+    )
+    folds: int = Field(
+        default=5, ge=2, le=10, description=&quot;Number of folds for this experiment&quot;
+    )
+</code></pre>
+<p>We will be using class <code>TrainIIDReqBody</code>'s methods and fields in the upcoming sections.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sanitizing-input"><a class="header" href="#sanitizing-input">Sanitizing input</a></h1>
+<p>It could be the case that the input data contains unprocessable characters for the machine learning algorithm. For example, the model algorithm template's algorithm cannot process datasets with <code>NaN</code> or empty strings. To fix that, we start out the training process by sanitizing the dataset:</p>
+<pre><code class="language-python">        # TODO: The implementer of algorithms should decide if this step is necessary, or if an alternative method should be used instead
+        # First sanitize the dataframe
+        sanitized_df = remove_invalid_values(request.get_training_df())
+        raw_holdout_df = request.get_holdout_data()
+        if raw_holdout_df is not None:
+            sanitized_holdout = remove_invalid_values(raw_holdout_df)
+        else:
+            sanitized_holdout = None
+</code></pre>
+<p>Notice how we are not parsing the request here, instead there already exists helper functions <code>get_training_df</code> and <code>get_holdout_data</code>.</p>
+<p>Since our model algorithm cannot handle invalid values, we can invoke the <code>remove_invalid_values</code> function from the <code>exodusutils</code> package to do that for us.</p>
+<p>If the machine learning algorithm you chose has different restrictions, you should implement them here.</p>
+<p>Note that <code>holdout_data</code> is actually an optional field for training, and we do not want to sanitize a nonexist dataset. So you want to make sure you sanitize it only when you're sure it is not a <code>None</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="feature-engineering"><a class="header" href="#feature-engineering">Feature engineering</a></h1>
+<p>After we've ensured that there's nothing unprocessable in our input, we can move on to the feature engineering step, where we manipulate the input data to generate more suitable training input.</p>
+<pre><code class="language-python">        # then, do feature engineering
+        # TODO decide what feature engineering steps you need by modifying `feature_engineering` method
+        training_df, holdout_df, encoders, components = feature_engineering(
+            sanitized_df, sanitized_holdout
+        )
+</code></pre>
+<p>If you right click on the <code>feature_engineering</code> symbol and select <code>Go to definition</code>, you should be able to see that this is a method defined in <code>model_algorithm.py</code> as well.</p>
+<pre><code class="language-python">def feature_engineering(training_df: pd.DataFrame, holdout_df: Optional[pd.DataFrame]):
+    &quot;&quot;&quot;
+    Does feature engineering for the dataframes.
+
+    Here you should use the helper methods in `exodusutils` package, i.e. `time_component_encoding`, `one_hot_encoding` and `label_encoding`.
+
+    Parameters
+    ----------
+    training_df : pd.DataFrame
+        The training dataframe
+    holdout_df : Optional[pd.DataFrame]
+        The holdout dataframe
+
+    Returns
+    -------
+    tuple[DataFrame, Optional[DataFrame], Dict[str, LabelEncoder], List[str]]
+        The modified training df and holdout df, the encoders for each categorical column, and the time component columns.
+    &quot;&quot;&quot;
+    training_df, holdout_df, encoders = label_encoding(training_df, holdout_df)
+    training_df, components = time_component_encoding(training_df)
+    # datetime columns are being removed because the necessary features derived from them
+    # have been generated in the previous step
+    # However, it is up to the developer to decide whether or not this step is necessary
+    training_df = remove_datetime_columns(training_df)
+    if holdout_df is not None:
+        holdout_df, _ = time_component_encoding(holdout_df)
+        holdout_df = remove_datetime_columns(holdout_df)
+    return training_df, holdout_df, encoders, components
+</code></pre>
+<p>The exact procedures for feature engineering is entirely up to you, and the code shown here is really just an example. Let's break it down step by step.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="label-encoding"><a class="header" href="#label-encoding">Label encoding</a></h1>
+<pre><code class="language-python">    training_df, holdout_df, encoders = label_encoding(training_df, holdout_df)
+</code></pre>
+<p>Label encoding is the procedure that turns a categorical column into a numeric one, with the numbers being the label for a categorical value. Here we have to make sure the generated columns are consistent between the training dataframe and the holdout dataframe, hence we pass both into the method. It handles the case when the holdout dataframe is actually <code>None</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="time-component-encoding"><a class="header" href="#time-component-encoding">Time component encoding</a></h1>
+<pre><code class="language-python">    training_df, components = time_component_encoding(training_df)
+</code></pre>
+<p>This encodes the datetime columns in the dataframe to different numeric columns.</p>
+<p>For example, suppose we have the following dataframe:</p>
+<table><thead><tr><th>ds</th></tr></thead><tbody>
+<tr><td>2022/01/01</td></tr>
+<tr><td>2022/03/12</td></tr>
+<tr><td>2022/05/23</td></tr>
+<tr><td>2022/07/04</td></tr>
+</tbody></table>
+<p>After we perform time component encoding, the result will be:</p>
+<table><thead><tr><th>ds</th><th>YEAR_ds</th><th>QUARTER_ds</th><th>MONTH_ds</th><th>WEEK_ds</th><th>WEEKDAY_ds</th><th>DAY_ds</th><th>HOUR_ds</th></tr></thead><tbody>
+<tr><td>2022/01/01</td><td>2022</td><td>1</td><td>1</td><td>52</td><td>6</td><td>1</td><td>0</td></tr>
+<tr><td>2022/03/12</td><td>2022</td><td>1</td><td>3</td><td>10</td><td>6</td><td>12</td><td>0</td></tr>
+<tr><td>2022/05/23</td><td>2022</td><td>2</td><td>5</td><td>21</td><td>1</td><td>23</td><td>0</td></tr>
+<tr><td>2022/07/04</td><td>2022</td><td>2</td><td>7</td><td>27</td><td>1</td><td>4</td><td>0</td></tr>
+</tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="remove-datetime-columns"><a class="header" href="#remove-datetime-columns">Remove datetime columns</a></h1>
+<p>Once we have done time component encoding, for our algorithm the datetime column is no longer needed.</p>
+<pre><code class="language-python">    training_df = remove_datetime_columns(training_df)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handle-holdout-dataframe"><a class="header" href="#handle-holdout-dataframe">Handle holdout dataframe</a></h1>
+<p>If the holdout dataframe exists, we perform the same feature engineering on it as the training dataframe.</p>
+<pre><code class="language-python">    if holdout_df is not None:
+        holdout_df, _ = time_component_encoding(holdout_df)
+        holdout_df = remove_datetime_columns(holdout_df)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="one-hot-encoding"><a class="header" href="#one-hot-encoding">One-hot encoding</a></h1>
+<p>One-hot encoding is another encoding technique to transform categorical columns. More precisely, it encodes a categorical column into multiple numeric columns, each representing one value in the categorical column.</p>
+<p>This encoding can be invoke by doing:</p>
+<pre><code class="language-python">    training_df, holdout_df, encoded_columns = one_hot_encoding(training_df, holdout_df)
+</code></pre>
+<p>You should choose either one of one-hot encoding and label encoding if you want to transform categorical columns.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="extract-unique-labels"><a class="header" href="#extract-unique-labels">Extract unique labels</a></h1>
+<p>In order to calculate cross validation scores properly for classification problems, we need to find out the total amount of categorical values in the target column. This is done in the below code snippet:</p>
+<pre><code class="language-python">        # the unique labels in the target column;
+        # used for calculating scores
+        labels = pd.unique(training_df[request.target.name])
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="calculate-cross-validation-scores"><a class="header" href="#calculate-cross-validation-scores">Calculate cross validation scores</a></h1>
+<p>Next, we calculate the cross validation scores for the model. The procedure is as follows:</p>
+<ol>
+<li>Cut the training dataframe into several sub-frames</li>
+<li>For each of those sub-frames, create a machine learning model</li>
+<li>For each of those trained machine learning models, calculate their performance by comparing its predictions to another sub-frame</li>
+</ol>
+<p>The corresponding code is the following snippet:</p>
+<pre><code class="language-python">        # Cut the training dataframe into cross-validation frames
+        cv_frames = CVFrames.iid(
+            training_df, request.folds, request.get_validation_data()
+        )
+
+        # Use the cross-validation frames to calculate the cv scores
+        folds = [do_cv_fold(cv_frame, request.target, labels) for cv_frame in cv_frames.frames]
+        cv_scores = CVScores(folds=folds)
+</code></pre>
+<p>We have provided several helper functions to make this a lot easier for you: the sub-frames splitting and the score calculations are all done by helpers in the <code>exodusutils</code> function! The only place you need modifying is in <code>do_cv_fold</code> function:</p>
+<pre><code class="language-python">def do_cv_fold(train_frames: TrainFrames, target: Column, labels: np.ndarray):
+    &quot;&quot;&quot;
+    Does a cross validation fold. Includes training a cross validation model and calculating the score for the model.
+
+    Parameters
+    ----------
+    train_frames : TrainFrames
+        The frames for this cross validation fold.
+    target : Column
+        The target column.
+    labels : np.ndarray
+        The unique classes that are involved in the classification problem.
+
+    Returns
+    -------
+    scores
+        The scores for this cross validation fold.
+    &quot;&quot;&quot;
+    cv_model = train_model(train_frames, target)
+    if train_frames.test is None:
+        raise ExodusBadRequest(detail=f&quot;Cannot create test frame for this fold&quot;)
+    return calculate_score(cv_model, train_frames.test, target, labels)
+</code></pre>
+<p>This is a rather simple function, but there are 2 methods called here: <code>train_model</code> and <code>calculate_score</code>, the former correspond to the training model part, while the latter the score calculation part. We will go over them in the following sections.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="train-the-machine-learning-model"><a class="header" href="#train-the-machine-learning-model">Train the machine learning model</a></h1>
+<p>Let's take a look at the <code>train_model</code> function, where we actually train a machine learning model:</p>
+<pre><code class="language-python">def train_model(train_frames: TrainFrames, target: Column):
+    &quot;&quot;&quot;
+    Trains a model.
+
+    Parameters
+    ----------
+    train_frames : TrainFrames
+        The frames required during training. Includes the training dataframe, the validation dataframe, and the testing dataframe.
+    target : Column
+        The target column, tells you the name and the type of the column.
+
+    Returns
+    -------
+    model
+        The trained model.
+    &quot;&quot;&quot;
+    train = train_frames.train
+    features = train.loc[:, train.columns != target.name]
+    targets = train[target.name]
+    if target.data_type == DataType.double:
+        model = LinearRegression()
+    else:
+        model = LogisticRegression()
+    model.fit(X=features, y=targets)
+    return model
+</code></pre>
+<p>Here, we extract the sub-frame that we will train the model with:</p>
+<pre><code class="language-python">    train = train_frames.train
+</code></pre>
+<p>And then split the sub-frame into one dataframe with features to train with, and another one with only the target values to fit the machine learning model:</p>
+<pre><code class="language-python">    features = train.loc[:, train.columns != target.name]
+    targets = train[target.name]
+</code></pre>
+<p>If we are dealing with a regression problem, where the target column consists of numeric values, we use <code>LinearRegression</code> algorithm. Otherwise we are dealing with a classification problem, and we use <code>LogisticRegression</code> algorithm.</p>
+<pre><code class="language-python">    if target.data_type == DataType.double:
+        model = LinearRegression()
+    else:
+        model = LogisticRegression()
+</code></pre>
+<p>After we decide which algorithm to use, we can fit the model, and then return it:</p>
+<pre><code class="language-python">    model.fit(X=features, y=targets)
+    return model
+</code></pre>
+<h2 id="implementing-your-own-thing"><a class="header" href="#implementing-your-own-thing">Implementing your own thing</a></h2>
+<p>Most of the code here should be changed by you. In particular these are the things you need to consider:</p>
+<ul>
+<li>Perhaps your machine learning algorithm is able to handle both classification and regression problems</li>
+<li>Your model might need to filter out some more features</li>
+<li>Instead of <code>fit</code>, your model might need to do something else</li>
+<li>Your model might require a validation dataframe, which can be retreived via <code>train_frames.validation</code></li>
+</ul>
+<p>Either way, the content of this function should only serve as an example, it is up to you to decide what should actually be the machine learning model.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="calculate-a-single-set-of-scores"><a class="header" href="#calculate-a-single-set-of-scores">Calculate a single set of scores</a></h1>
+<p>After we've trained a model, we want to be able to measure its performance. In our template this is done in the <code>calculate_score</code> function:</p>
+<pre><code class="language-python">def calculate_score(
+    model: Union[LinearRegression, LogisticRegression], df: pd.DataFrame, target: Column, labels: np.ndarray
+) -&gt; Scores:
+    &quot;&quot;&quot;
+    Calculates the scores for a frame and a model.
+
+    The type of the model here should be modified.
+
+    Parameters
+    ----------
+    model : Unknown
+        The model to score with.
+    df : pd.DataFrame
+        The frame to score with.
+    target : Column
+        The target column.
+    labels: np.ndarray
+        The unique classes that were present in the training dataframe in a classification problem
+
+    Returns
+    -------
+    Scores
+        The scores for the model and the frame.
+    &quot;&quot;&quot;
+    features = df.loc[:, df.columns != target.name]
+    predicted = model.predict(X=features)
+    actual = np.array(df[target.name].values)
+    if target.data_type == DataType.double:
+        # model type is LinearRegression here
+        if not isinstance(model, LinearRegression):
+            raise RuntimeError(
+                f&quot;Got {model.__class__} when it should be LinearRegression&quot;
+            )
+        return RegressionScores.get_scores(predicted, actual)
+    else:
+        # model type is LogisticRegression here
+        if not isinstance(model, LogisticRegression):
+            raise RuntimeError(
+                f&quot;Got {model.__class__} when it should be LogisticRegression&quot;
+            )
+        pred_proba = model.predict_proba(features)
+        return ClassificationScores.get_scores(predicted, pred_proba, actual, labels)
+</code></pre>
+<p>Let's go through this step by step:</p>
+<ol>
+<li>We extract the features from the given dataframe:
+<pre><code class="language-python">    features = df.loc[:, df.columns != target.name]
+</code></pre>
+</li>
+<li>We predict using the trained model and the extracted features:
+<pre><code class="language-python">    predicted = model.predict(X=features)
+</code></pre>
+</li>
+<li>We extract the actual values from the given dataframe:
+<pre><code class="language-python">    actual = np.array(df[target.name].values)
+</code></pre>
+</li>
+<li>If it is a regression problem, use the <code>RegressionScores</code> helper class to calculate the scores:
+<pre><code class="language-python">        return RegressionScores.get_scores(predicted, actual)
+</code></pre>
+</li>
+<li>Otherwise we use the <code>ClassificationScores</code> helper class to calculate:
+<pre><code class="language-python">        pred_proba = model.predict_proba(features)
+        return ClassificationScores.get_scores(predicted, pred_proba, actual, labels)
+</code></pre>
+</li>
+</ol>
+<p>The <code>RegressionScores</code> and <code>ClassificationScores</code> helper classes will generate scores for you via the method <code>get_scores</code>, all you need to do is to provide the arguments.</p>
+<h2 id="implementing-your-own-thing-1"><a class="header" href="#implementing-your-own-thing-1">Implementing your own thing</a></h2>
+<p>Just like the <code>train_model</code> function, a lot of this is subject to which model you chose to use. Maybe your model does not have a <code>predict</code> method nor a <code>predict_proba</code> method, maybe your model needs more information than just the features to predict. Either way, it is up to you to decide what should be in this function. Once you have figured out how to predict using the trained model, the helper classes will automatically generate the scores.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="save-the-model"><a class="header" href="#save-the-model">Save the model</a></h1>
+<p>Let's take a look at the following code snippet in the <code>train_iid</code> method:</p>
+<pre><code class="language-python">        # Save the model info into MongoDB
+        model_info_id = ModelInfo.save(
+            name=self.name,
+            target=request.target,
+            model=model,
+            encoders=encoders,
+            time_components=components,
+            feature_types=request.feature_types,
+            mongo=self.mongo,
+            gridfs=self.gridfs,
+            collection=self.collection,
+        )
+</code></pre>
+<p>And in <code>model_info.py</code>, the <code>save</code> method for <code>ModelInfo</code> is defined as:</p>
+<pre><code class="language-python">    @classmethod
+    def save(
+        cls,
+        name: str,
+        target: Column,
+        model: Union[LinearRegression, LogisticRegression],
+        encoders: Dict[str, LabelEncoder],
+        time_components: List[str],
+        feature_types: List[Column],
+        mongo: MongoInstance,
+        gridfs: GridFS,
+        collection: Collection,
+    ) -&gt; str:
+
+        model_id = save_sklearn_stuff(model, gridfs)
+        saved_encoders = {k: save_sklearn_stuff(v, gridfs) for k, v in encoders.items()}
+
+        model_info = cls(
+            name=name,
+            target=target,
+            model_id=model_id,
+            encoder_ids=saved_encoders,
+            time_components=time_components,
+            feature_types=feature_types,
+        )
+
+        doc = model_info.dict()
+        for field in model_info.encrypted_fields:
+            if doc.get(field) is None:
+                raise ExodusError(f'field = &quot;{field}&quot; is not a valid key for ModelInfo')
+            doc[field] = mongo.encrypt(doc[field])
+        return str(collection.insert_one(doc).inserted_id)
+</code></pre>
+<p>The <code>save</code> method returns a stringified <code>ObjectId</code>, which you should pass back to the user so that they can identify the model that was just trained.</p>
+<p>The <code>save</code> method can be split into 3 parts:</p>
+<ol>
+<li>Saving <code>scikit-learn</code> stuff</li>
+<li>Creating a <code>ModelInfo</code> instance</li>
+<li>Encrypting the <code>ModelInfo</code> instance and storing it into MongoDB</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="saving-scikit-learn-stuff"><a class="header" href="#saving-scikit-learn-stuff">Saving scikit-learn stuff</a></h1>
+<p>The maximum size limit for a MongoDB document is 4MB. Unfortunately, it is not unlikely that your machine learning will exceed that limit. To handle this behavior, we can store our machine learning and label encoders in GridFS, a component of MongoDB that is designed to specifically handel this scenario.</p>
+<pre><code class="language-python">def save_sklearn_stuff(stuff: Any, gridfs: GridFS) -&gt; str:
+    return str(gridfs.put(pickle.dumps(stuff)))
+</code></pre>
+<p>We use this function to store <code>scikit-learn</code> artifacts, namely the machine learning model and the label encoders. The function is actually very simple:</p>
+<ol>
+<li>Dumps the thing into a byte sequence using <code>pickle</code>, the de-facto default serializer for Python</li>
+<li>Stores the byte sequence into GridFS, and retrieve an <code>ObjectId</code></li>
+<li>Converts that <code>ObjectId</code> into a string, for the former does not play well with built-in Python classes</li>
+</ol>
+<p>Notice there is a <code>FIXME</code> beneath the comments, this is to warn you that by pickling an artifact, you are also including its dependencies such as libraries, versions, and so on. This makes it virtually impossible for backward compatibility if you ever plan to upgrade a package that you've installed. Luckily it is not really something you should do that often, if at all. Still, if you find yourself in need of upgrading a package, and you've pickled something generate from that package, chances are you are better off creating a new model that makes use of the newer package.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="store-the-necessary-informations"><a class="header" href="#store-the-necessary-informations">Store the necessary informations</a></h1>
+<p>Let's take a look at the declaration of the <code>ModelInfo</code> class:</p>
+<pre><code class="language-python">class ModelInfo(BaseModel):
+    name: str
+    target: Column
+    model_id: str
+    encoder_ids: Dict[str, str]
+    time_components: List[str]
+    feature_types: List[Column]
+
+    encrypted_fields: List[str] = Field(
+        default=[&quot;target&quot;, &quot;encoder_ids&quot;, &quot;time_components&quot;, &quot;feature_types&quot;],
+        exclude=True,
+    )
+
+    model: Union[LinearRegression, LogisticRegression] = Field(
+        default=None, exclude=True
+    )
+    encoders: Dict[str, LabelEncoder] = Field(default=None, exclude=True)
+</code></pre>
+<p>The only ones that are required are <code>name</code>, <code>target</code>, <code>model_id</code>, <code>encoder_ids</code>, <code>time_components</code>, and <code>feature_types</code>. As for the rest:</p>
+<ul>
+<li><code>encrypted_fields</code> describes what you need to encrypt if <code>encrypted</code> is set to <code>true</code> in <code>config.ini</code>. See Appendix C for more info.</li>
+<li><code>model</code> is the actual machine learning model that you just trained. During prediction, you should be using this.</li>
+<li><code>encoders</code> is the actual encoders. During prediction, you should be using this.</li>
+</ul>
+<p>Let's get back to the <code>save</code> method:</p>
+<pre><code class="language-python">        model_info = cls(
+            name=name,
+            target=target,
+            model_id=model_id,
+            encoder_ids=saved_encoders,
+            time_components=time_components,
+            feature_types=feature_types,
+        )
+</code></pre>
+<p>Notice how we only fill in the required fields, and left the rest as default.</p>
+<h2 id="what-should-i-include-in-modelinfo"><a class="header" href="#what-should-i-include-in-modelinfo">What should I include in <code>ModelInfo</code>?</a></h2>
+<p>Rule of thumb is to include anything you will need for prediction. That could include the following:</p>
+<ul>
+<li>A portion of the training dataframe</li>
+<li>Some more feature engineering artifacts</li>
+<li>Columns that require additional processing</li>
+</ul>
+<h2 id="what-should-i-implement"><a class="header" href="#what-should-i-implement">What should I implement?</a></h2>
+<p>The developer of the model algorithm should implement the following:</p>
+<ol>
+<li>A way to dump the things into an object that can be downloaded (see <code>dump_to_base64</code> method)</li>
+<li>The <code>delete</code> method, when you delete a <code>ModelInfo</code> you should also remove the relevant machine learning model and feature engineering artifacts</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encrypting--saving-the-modelinfo"><a class="header" href="#encrypting--saving-the-modelinfo">Encrypting &amp; saving the ModelInfo</a></h1>
+<p>The <code>MongoInstance</code> class contains a method that encrypts values for you automatically, so encryption becomes almost trivial:</p>
+<pre><code class="language-python">        doc = model_info.dict()
+        for field in model_info.encrypted_fields:
+            if doc.get(field) is None:
+                raise ExodusError(f'field = &quot;{field}&quot; is not a valid key for ModelInfo')
+            doc[field] = mongo.encrypt(doc[field])
+</code></pre>
+<p>You turn the <code>ModelInfo</code> into a dictionary (this is the document we will be storing into MongoDB), and replace the fields you want to encrypt with the encrypted value.</p>
+<p>If there's a key in the <code>encrypted_fields</code> variable that does not exist in the fields of <code>ModelInfo</code>, an exception will be raised.</p>
+<p>To save the model, we insert it into the MongoDB collection corresponding to the model algorithm, and return the stringified <code>ObjectId</code>.</p>
+<pre><code class="language-pythons">        return str(collection.insert_one(doc).inserted_id)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="return-the-results"><a class="header" href="#return-the-results">Return the results</a></h1>
+<p>After we are done training and saving the model, the last step would be returning the results to the user.</p>
+<pre><code class="language-python">        # Create the `Attributes` instance
+        attributes = Attributes(cv_scores=cv_scores, holdout_scores=holdout_scores)
+
+        # Create the response, then return it
+        response = TrainRespBody(
+            name=self.name,
+            attributes=attributes,
+            model_id=model_info_id,
+            hyperparameters=model.get_params(),
+        )
+
+        return response
+</code></pre>
+<p>Here <code>cv_scores</code> and <code>holdout_scores</code> are both calculated earlier during the training process.</p>
+<h2 id="the-model-hyperparameters"><a class="header" href="#the-model-hyperparameters">The model hyperparameters</a></h2>
+<p>Notice there's a field for hyperparameters in <code>TrainRespBody</code>. This is to record the machine learning algorithm's hyperparameters, and should be a <code>Dict</code>. Most of the machine learning algorithms provide a function to expose the set of hyperparameters, but if it is not the case you should look up the possible settings for the machine learning algorithm, and then put them in this field.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="piecing-it-together"><a class="header" href="#piecing-it-together">Piecing it together</a></h1>
+<p>Here's the <code>train_iid</code> method in its entirety (sans comments):</p>
+<pre><code class="language-python">    def train_iid(self, request: TrainIIDReqBody) -&gt; TrainRespBody:
+
+        # SANITIZING #
+
+        sanitized_df = remove_invalid_values(request.get_training_df())
+        raw_holdout_df = request.get_holdout_data()
+        if raw_holdout_df is not None:
+            sanitized_holdout = remove_invalid_values(raw_holdout_df)
+        else:
+            sanitized_holdout = None
+
+        # FEATURE ENGINEERING #
+
+        training_df, holdout_df, encoders, components = feature_engineering(
+            sanitized_df, sanitized_holdout
+        )
+
+        labels = pd.unique(training_df[request.target.name])
+
+        # CROSS VALIDATION #
+
+        cv_frames = CVFrames.iid(
+            training_df, request.folds, request.get_validation_data()
+        )
+
+        folds = [
+            do_cv_fold(cv_frame, request.target, labels)
+            for cv_frame in cv_frames.frames
+        ]
+        cv_scores = CVScores(folds=folds)
+
+        # TRAIN THE MODEL #
+
+        train_frames = TrainFrames(train=training_df, validation=request.get_validation_data())
+        model = train_model(train_frames, request.target)
+
+        # HOLDOUT #
+
+        if holdout_df is not None:
+            holdout_scores = calculate_score(model, holdout_df, request.target, labels)
+        else:
+            holdout_scores = None
+
+        # SAVING #
+
+        model_info_id = ModelInfo.save(
+            name=self.name,
+            target=request.target,
+            model=model,
+            encoders=encoders,
+            time_components=components,
+            feature_types=request.feature_types,
+            mongo=self.mongo,
+            gridfs=self.gridfs,
+            collection=self.collection,
+        )
+
+        # PREPARING RESPONSE #
+
+        attributes = Attributes(cv_scores=cv_scores, holdout_scores=holdout_scores)
+
+        response = TrainRespBody(
+            name=self.name,
+            attributes=attributes,
+            model_id=model_info_id,
+            hyperparameters=model.get_params(),
+        )
+
+        return response
+</code></pre>
+<p>Several things to note here:</p>
+<ol>
+<li>For the final machine learning model, we do not need to calculate its score. Therefore we use the helper class <code>TrainFrames</code>, and invoke its method <code>iid_without_test</code> to generate the training frame and the validation frame.</li>
+<li>Remember in <code>do_cv_fold</code> we make use of the methods <code>train_model</code> and <code>calculate_score</code>? After we have calculated the cross validation scores, we can reuse those methods to calculate the final machine learning model, and calculate the holdout scores.</li>
+</ol>
+<p>Now, we have successfully trained our machine learning model, and a set of scores to evaluate this model. In the following section we will see how persisting this model is possible.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="predicting-with-a-trained-model"><a class="header" href="#predicting-with-a-trained-model">Predicting with a trained model</a></h1>
+<p>Once we have successfully trained and stored a model, next we will need to predict something from this model. The general workflow is as follows:</p>
+<ol>
+<li>Load the model from MongoDB</li>
+<li>Sanitize the prediction input</li>
+<li>Apply the feature engineering steps</li>
+<li>Predict</li>
+<li>Format the predicted results</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="load-a-model"><a class="header" href="#load-a-model">Load a model</a></h1>
+<p>In order to properly predict with a previously trained model, we need to first load the saved model from MongoDB.</p>
+<p>Basically, you want to do the inverse of what you did during training: if you stored some <code>LabelEncoder</code>s into GridFS, here you need to extract them, and so on.</p>
+<pre><code class="language-python">    @classmethod
+    def load(cls, model_id: str, collection: Collection, gridfs: GridFS):
+        obj = collection.find_one(filter=identify(model_id))
+        if not obj:
+            raise ExodusNotFound(f&quot;No model found with id = {model_id}&quot;)
+        model_info = cls.parse_obj(obj)
+        model_info.encoders = {
+            k: load_sklearn_stuff(v, gridfs) for k, v in model_info.encoder_ids.items()
+        }
+        model_info.model = load_sklearn_stuff(model_info.model_id, gridfs)
+
+        return model_info
+</code></pre>
+<p>Compare the above with the code snippet where we store the machine learning model and encoders into GridFS:</p>
+<pre><code class="language-python">        model_id = save_sklearn_stuff(model, self.gridfs)
+        saved_encoders = {k: save_sklearn_stuff(v, self.gridfs) for k, v in encoders.items()}
+</code></pre>
+<p>Remember we had fields <code>model</code> and <code>encoders</code> in our <code>ModelInfo</code>? During <code>load</code>, we actually store those in the resulting <code>ModelInfo</code>, so we can guarantee that after loading a <code>ModelInfo</code>, it is safe to access the <code>model</code>, which is the machine learning model, and the <code>encoders</code>, which are the label encoders.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sanitizing-input-1"><a class="header" href="#sanitizing-input-1">Sanitizing input</a></h1>
+<pre><code class="language-python">        original_df = request.get_prediction_df(model_info.feature_types)
+        sanitized_df = remove_invalid_values(original_df)
+</code></pre>
+<p>This should be self-explanatory. Basically, here your code should be doing what you did to the training dataframe.</p>
+<p>Notice how we have access to the prediction dataframe via <code>get_prediction_df</code> method from the <code>PredictReqBody</code> class.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="apply-feature-engineering"><a class="header" href="#apply-feature-engineering">Apply feature engineering</a></h1>
+<pre><code class="language-python">def apply_feature_engineering(df: pd.DataFrame, encoders: Dict[str, LabelEncoder]) -&gt; pd.DataFrame:
+    encoded: pd.DataFrame = (df.pipe(apply_label_encoders, encoders).pipe(time_component_encoding))[0]
+    return encoded.pipe(fill_nan_with_average, list(encoders.keys())).pipe(remove_datetime_columns)
+
+# ... snipped ...
+
+        df = apply_feature_engineering(sanitized_df, model_info.encoders)
+</code></pre>
+<p>Most of the things you are doing here are exactly the same as the <code>feature_engineering</code> part, except here you need to make sure you sanitize your dataframe properly.</p>
+<h2 id="sanitize-the-result-properly"><a class="header" href="#sanitize-the-result-properly">Sanitize the result properly</a></h2>
+<p>Consider the following training dataframe, where there is only 1 column:</p>
+<table><thead><tr><th>column</th></tr></thead><tbody>
+<tr><td>foo</td></tr>
+<tr><td>bar</td></tr>
+<tr><td>baz</td></tr>
+</tbody></table>
+<p>Then after the column has been label encoded, the result becomes:</p>
+<table><thead><tr><th>column</th></tr></thead><tbody>
+<tr><td>0</td></tr>
+<tr><td>1</td></tr>
+<tr><td>2</td></tr>
+</tbody></table>
+<p>Where <code>foo</code> gets encoded to <code>0</code>, <code>bar</code> becomes <code>1</code>, and <code>baz</code> becomes <code>2</code>.</p>
+<p>However, if the prediction dataframe contains a value never seen during training, the encoder will not be able to deduce which label it should encode the value to, and will return a <code>NaN</code>. For example, consider the below dataframe:</p>
+<table><thead><tr><th>column</th></tr></thead><tbody>
+<tr><td>bar</td></tr>
+<tr><td>quax</td></tr>
+<tr><td>bar</td></tr>
+<tr><td>foo</td></tr>
+</tbody></table>
+<p>After we apply our encoder, the result is:</p>
+<table><thead><tr><th>column</th></tr></thead><tbody>
+<tr><td>1</td></tr>
+<tr><td>nan</td></tr>
+<tr><td>1</td></tr>
+<tr><td>0</td></tr>
+</tbody></table>
+<p>If your machine learning algorithm cannot handle <code>NaN</code> properly, then after you've applied the feature engineering encoders there is no way for the algorithm to perform prediction.</p>
+<p>In situations like this, a common method is to impute the missing values with a designated special value. In <code>exodusutils</code> the method <code>fill_nan_with_mode</code> is doing just that: we extract the most frequent label for an encoded column, and force the invalid cells to that most frequent label.</p>
+<p>In our example, the final result after we've applied the <code>fill_nan_with_mode</code> method will be:</p>
+<table><thead><tr><th>column</th></tr></thead><tbody>
+<tr><td>1</td></tr>
+<tr><td>1</td></tr>
+<tr><td>1</td></tr>
+<tr><td>0</td></tr>
+</tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="predict"><a class="header" href="#predict">Predict</a></h1>
+<p>After we've sanitized and applied feature engineering, it is finally time to predict with our model. Note that during cross validation we've already predicted using a calculated machine learning model though, so here it's more or less just repeating what you did back then.</p>
+<pre><code class="language-python">        features = df.loc[:, df.columns != model_info.target.name]
+        predicted = model_info.model.predict(features)
+</code></pre>
+<p>Here we extract the features we are using, then predict using the selected features.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="format-the-results"><a class="header" href="#format-the-results">Format the results</a></h1>
+<p>After we have our raw prediction results, we need to piece it back into a JSON string.</p>
+<pre><code class="language-python">        if model_info.target.data_type != DataType.double:
+            predicted = model_info.encoders[model_info.target.name].inverse_transform(predicted)
+
+        sanitized_df[PREDICTION_COLNAME] = predicted
+
+        if model_info.target.data_type != DataType.double:
+            classes = list(model_info.model.classes_)
+            predict_proba = pd.DataFrame(model_info.model.predict_proba(features), columns=classes)
+            sanitized_df = pd.concat([sanitized_df, predict_proba], axis=1).reset_index(drop=True)
+        else:
+            classes = list()
+
+        columns_to_drop = [
+            c
+            for c in list(sanitized_df.columns)
+            if c not in request.keep_columns and c != PREDICTION_COLNAME and c not in classes
+        ]
+
+        results: List[Dict[str, Any]] = json.loads(
+            str(sanitized_df.drop(columns=columns_to_drop).to_json(orient=&quot;records&quot;))
+        )
+</code></pre>
+<p>The return value of the <code>predict</code> method contains only a field of type <code>List[Dict[str, Any]]</code>, where a single <code>Dict</code> represents the prediction results for a single row in the prediction input dataframe. That being said, it is easier for us to manipulate on a dataframe than doing each <code>Dict</code> by hand, so let's see how we can achieve that.</p>
+<h2 id="turn-our-predicted-value-back-to-strings"><a class="header" href="#turn-our-predicted-value-back-to-strings">Turn our predicted value back to strings</a></h2>
+<p>Remember that we did <code>label_encoding</code> during feature engineering? This will turn our target column into a column with numeric class labels, and we need to turn those back into actual strings.</p>
+<p>To do that, we make use of the <code>LabelEncoder.inverse_transform</code> method:</p>
+<pre><code class="language-python">        if model_info.target.data_type != DataType.double:
+            predicted = model_info.encoders[model_info.target.name].inverse_transform(predicted)
+</code></pre>
+<p>If your model didn't do <code>label_encoding</code> during feature engineering, you can omit this step.</p>
+<h2 id="attach-the-predicted-values"><a class="header" href="#attach-the-predicted-values">Attach the predicted values</a></h2>
+<p>Then we attach our predicted value to the input dataframe.</p>
+<pre><code class="language-python">        sanitized_df[PREDICTION_COLNAME] = predicted
+</code></pre>
+<p>If we are dealing with a classification problem, each prediction should come with the prediction probabilities of all the possible classes. To do that, we create a new dataframe containing the prediction probabilities, and then concatenate the new dataframe to our result dataframe.</p>
+<p>Note that we have to use the strings instead of the model's classes, which are just a bunch of numbers.</p>
+<pre><code class="language-python">        if model_info.target.data_type != DataType.double:
+            classes = list(model_info.encoders[model_info.target.name].classes_)
+            predict_proba = pd.DataFrame(model_info.model.predict_proba(features), columns=classes)
+            sanitized_df = pd.concat([sanitized_df, predict_proba], axis=1).reset_index(drop=True)
+        else:
+            classes = list()
+</code></pre>
+<p>We also need to keep track of the classes we've added to the result dataframe.</p>
+<h2 id="drop-columns-we-dont-need"><a class="header" href="#drop-columns-we-dont-need">Drop columns we don't need</a></h2>
+<p>Then we need to filter out the columns we don't need for the result.</p>
+<pre><code class="language-python">        columns_to_drop = [
+            c
+            for c in list(sanitized_df.columns)
+            if c not in request.keep_columns and c != PREDICTION_COLNAME and c not in classes
+        ]
+</code></pre>
+<p>We only keep the columns that are explicitly specified by the user (via the <code>keep_columns</code> field in the request), the prediction result column (the <code>PREDICTION_COLNAME</code> variable, which is an alias for the string <code>&quot;prediction&quot;</code>), and the classes for the target column if it's a classification problem.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="piecing-it-together-1"><a class="header" href="#piecing-it-together-1">Piecing it together</a></h1>
+<p>Here's the <code>predict</code> method in its entirety (sans comments):</p>
+<pre><code class="language-python">    def predict(self, request: PredictReqBody) -&gt; PredictRespBody:
+
+        # LOADING #
+
+        model_info = ModelInfo.load(request.model_id, self.collection, self.gridfs)
+
+        # SANITIZING #
+
+        original_df = request.get_prediction_df(model_info.feature_types)
+        sanitized_df = remove_invalid_values(original_df)
+
+        # APPLYING FEATURE ENGINEERING #
+
+        df = apply_feature_engineering(sanitized_df, model_info.encoders)
+
+        # PREDICTING #
+
+        features = df.loc[:, df.columns != model_info.target.name]
+        predicted = model_info.model.predict(features)
+
+        # FORMATING RESULTS #
+
+        if model_info.target.data_type != DataType.double:
+            predicted = model_info.encoders[model_info.target.name].inverse_transform(predicted)
+
+        sanitized_df[PREDICTION_COLNAME] = predicted
+
+        if model_info.target.data_type != DataType.double:
+            if not isinstance(model_info.model, LogisticRegression):
+                raise RuntimeError(
+                    f&quot;Got {model_info.model.__class__} when it should be LogisticRegression&quot;
+                )
+            classes = list(model_info.encoders[model_info.target.name].classes_)
+            predict_proba = pd.DataFrame(
+                model_info.model.predict_proba(features), columns=classes
+            )
+            sanitized_df = pd.concat([sanitized_df, predict_proba], axis=1).reset_index(
+                drop=True
+            )
+        else:
+            classes = list()
+
+        columns_to_drop = [
+            c
+            for c in list(sanitized_df.columns)
+            if c not in request.keep_columns
+            and c != PREDICTION_COLNAME
+            and c not in classes
+        ]
+
+        # PREPARING RESPONSE #
+
+        results: List[Dict[str, Any]] = json.loads(
+            str(sanitized_df.drop(columns=columns_to_drop).to_json(orient=&quot;records&quot;))
+        )
+
+        response = PredictRespBody(prediction=results)
+        return response
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="testing-the-model"><a class="header" href="#testing-the-model">Testing the model</a></h1>
+<p>There are several ways to verify that your model algorithm is able to run properly</p>
+<ul>
+<li>Running unit tests
+<ul>
+<li>Basic tests to ensure basic functionalities work. If any of the unit tests failed, something is wrong with your code.</li>
+<li>You are encouraged to create new unit tests, since they are much more simple to use then setting up your own script.</li>
+</ul>
+</li>
+<li>Using the landing page
+<ul>
+<li>If you just want to test whether your code can work for a piece of data, use your browser and navigate to the main page of the model algorithm.</li>
+<li>You can run experiments through the landing page, and then inspect the output of the model algorithm service by the <code>poe watch</code> command.</li>
+</ul>
+</li>
+<li>Using the script / writing your own scripts
+<ul>
+<li>If you don't have access to a browser.</li>
+<li>Need to setup things in a rather particular way.</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-unit-tests"><a class="header" href="#running-unit-tests">Running unit tests</a></h1>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<p>Before you run the tests, you need to fire up the MongoDB container. This can be done via the below command:</p>
+<pre><code class="language-bash">PORT=1234 docker-compose up -d mongo
+</code></pre>
+<p>The <code>PORT</code> environment variable will not actually be used, it's just <code>docker-compose</code> does not realize this variable is not needed if you're only starting the MongoDB service.</p>
+<p>Your MongoDB service will be running, and can be reached at port 27018.</p>
+<h2 id="make-sure-you-have-a-mongodb-service-up-and-running"><a class="header" href="#make-sure-you-have-a-mongodb-service-up-and-running">Make sure you have a MongoDB service up and running!</a></h2>
+<p>Otherwise all the unit tests will fail due to model algorithm timing out!</p>
+<h2 id="run-the-test"><a class="header" href="#run-the-test">Run the test</a></h2>
+<h3 id="via-command-line"><a class="header" href="#via-command-line">Via command line</a></h3>
+<pre><code class="language-bash">poe test
+</code></pre>
+<p>This will run all the unit tests within <code>tests/</code> directory, which are the files that contain a <code>test_</code> prefix in their names.</p>
+<h3 id="via-vscode"><a class="header" href="#via-vscode">Via VSCode</a></h3>
+<ol>
+<li>Press <code>ctrl+shift+p</code>, or go to <code>Help</code> &gt; <code>Show All Commands</code></li>
+<li>Type in <code>Python: Configure Tests</code>, select that and then press <code>enter</code></li>
+<li>Select <code>pytest</code></li>
+<li>Select <code>tests</code></li>
+<li>Go to the <code>testing</code> panel</li>
+</ol>
+<p><img src="how_to/testing/images/unit_test_1.png" alt="" />
+<img src="how_to/testing/images/unit_test_2.png" alt="" />
+<img src="how_to/testing/images/unit_test_3.png" alt="" />
+<img src="how_to/testing/images/unit_test_4.png" alt="" /></p>
+<p>If no tests were run before the green ticks will not be there.</p>
+<p>To run the tests, right click on the  <code>exodus_model_template</code> symbol, and select <code>Debug Test</code>.</p>
+<h2 id="write-your-own-test"><a class="header" href="#write-your-own-test">Write your own test</a></h2>
+<p>Most likely you want to make sure your model algorithm can run with some dataset you already have. To test whether your model algorithm can train and predict upon that dataset:</p>
+<ol>
+<li>Create a directory in <code>tests/datasets</code>. Let's say <code>tests/datasets/foo/</code></li>
+<li>Move your training CSV file into <code>tests/datasets/foo/</code>, and rename it to <code>tests/datasets/foo/train.csv</code></li>
+<li>Move your prediction CSV file into <code>tests/datasets/foo/</code>, and rename it to <code>tests/datasets/foo/prediction.csv</code></li>
+<li>If you have a holdout dataset, move that file into <code>tests/datasets/foo/</code>, and rename it to <code>tests/datasets/foo/holdout.csv</code></li>
+<li>Create a new file called <code>tests/datasets/foo/meta.json</code>, which should contain the following fields:
+<ul>
+<li><code>&quot;target_column_name&quot;</code>: the name of the target column</li>
+<li><code>&quot;features&quot;</code>: a dict from the column names to the column types. The types should all be either one of <code>&quot;string&quot;</code> or <code>&quot;double&quot;</code></li>
+</ul>
+</li>
+<li>Write the test method by extending the <code>tests/test_ml.py</code> files:
+<pre><code class="language-python">def test_foo():
+    train_predict_delete(&quot;./tests/datasets/foo&quot;)
+</code></pre>
+It really is as simple as that!</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debugging-the-model-algorithm"><a class="header" href="#debugging-the-model-algorithm">Debugging the model algorithm</a></h1>
+<p>Let's say your unit test failed, and you want to figure out why. The common way to do this would be to add a lot of <code>print()</code> and hope that uncovers the issue, but actually there's a much more efficient way to debug: using a debugger.</p>
+<h2 id="how-to-debug-with-a-debugger"><a class="header" href="#how-to-debug-with-a-debugger">How to debug with a debugger</a></h2>
+<ol>
+<li>You set a breakpoint in your code, the breakpoint is to signal the debugger that the execution should be paused when it got to that line of code, and all execution contexts can be examined by the user</li>
+<li>You use the debugger console to print various informations</li>
+<li>You can jump between stacks (i.e. the method that is calling the method you're in right now)</li>
+<li>You can step through the execution, so that instead of running everything and failing immediately you can actually see where the program failed</li>
+</ol>
+<h2 id="vscode-1"><a class="header" href="#vscode-1">VSCode</a></h2>
+<h3 id="setting-breakpoint"><a class="header" href="#setting-breakpoint">Setting breakpoint</a></h3>
+<p>It's just clicking the empty margin on the left of the line number:</p>
+<p><img src="how_to/testing/images/debug_1.png" alt="" /></p>
+<p>Here I set a breakpoint right before the <code>train_iid</code> method returns.</p>
+<h3 id="executing-the-test"><a class="header" href="#executing-the-test">Executing the test</a></h3>
+<p>You can run any specific test by expanding the drop down menu in the <code>testing</code> panel, right click on the target test method, and do <code>Debug test</code>.</p>
+<p><img src="how_to/testing/images/debug_2.png" alt="" /></p>
+<p>Once it started running, the program will pause at the line of your breakpoint.</p>
+<p><img src="how_to/testing/images/debug_3.png" alt="" /></p>
+<p>Toggle the debug console, or press <code>ctrl+shift+y</code>.</p>
+<p><img src="how_to/testing/images/debug_4.png" alt="" /></p>
+<p>In the debug console, type in whatever you want to see. For example, here I typed in <code>request.attributes</code>.</p>
+<p><img src="how_to/testing/images/debug_5.png" alt="" /></p>
+<p>Once you are done, either press the <code>Continue</code> button on the top of the screen (or press <code>&lt;F5&gt;</code>), or step through the execution, or do whatever you want. When the program finishes running, you can see the test result in the debug console.</p>
+<p><img src="how_to/testing/images/debug_6.png" alt="" /></p>
+<h2 id="non-vscode"><a class="header" href="#non-vscode">Non VSCode</a></h2>
+<p>I'd say using VSCode is the better choice here, but if you insist you can insert <code>pdb</code> breakpoints in your code (here I will insert a breakpoint right before <code>train_iid</code> returns):</p>
+<pre><code class="language-python">        response = TrainRespBody(
+            name=self.name,
+            attributes=attributes,
+            model_id=model_info_id,
+            hyperparameters=model.get_params(),
+        )
+
+        # THIS LINE IS THE BREAKPOINT
+        import pdb; pdb.set_trace()
+
+        return response
+</code></pre>
+<p>For more information, visit <a href="https://docs.python.org/3/library/pdb.html">the <code>pdb</code> documentation page</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debugging-the-model-algorithm-with-actual-requests"><a class="header" href="#debugging-the-model-algorithm-with-actual-requests">Debugging the model algorithm with actual requests</a></h1>
+<p>Right now we haven't figured out a way to debug FastAPI applications in a container, so to use a debugger to debug the application you need to the following:</p>
+<ol>
+<li>Start MongoDB service</li>
+<li>In <code>app.py</code>, modify the declaration of <code>model_algorithm</code> variable to the following:
+<pre><code class="language-python">model_algorithm = ModelAlgorithm(host=&quot;localhost&quot;, port=&quot;27018&quot;)
+</code></pre>
+</li>
+<li>Run the FastAPI application
+<ul>
+<li>In VSCode: insert the following code snippet to <code>.vscode/launch.json</code> (can be opened via <code>Show All Commands</code> &gt; <code>Open 'launch.json'</code>)
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Python: FastAPI&quot;,
+    &quot;type&quot;: &quot;python&quot;,
+    &quot;request&quot;: &quot;launch&quot;,
+    &quot;module&quot;: &quot;uvicorn&quot;,
+    &quot;args&quot;: [
+        &quot;exodus_model_template.app:app&quot;
+    ],
+    &quot;jinja&quot;: true,
+    &quot;justMyCode&quot;: true
+}
+</code></pre>
+</li>
+<li>In command line: run the app via the following command:
+<pre><code class="language-bash">poetry run python -m pdb exodus_model_template/app.py
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="debug-the-deployed-containerized-model-algorithm"><a class="header" href="#debug-the-deployed-containerized-model-algorithm">Debug the deployed, containerized model algorithm</a></h2>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-the-landing-page"><a class="header" href="#using-the-landing-page">Using the landing page</a></h1>
+<p>See <code>Run the model template</code>.</p>
+<h2 id="what-if-i-dont-want-to-use-port-3000-for-the-webapp"><a class="header" href="#what-if-i-dont-want-to-use-port-3000-for-the-webapp">What if I don't want to use port 3000 for the webapp?</a></h2>
+<p>In <code>docker-compose.yml</code>:</p>
+<pre><code class="language-yaml">services:
+# ... snipped ...
+  web_app:
+    ports:
+      - &quot;3000:3000&quot; # Change this to &quot;{SOME_PORT}:3000&quot;
+</code></pre>
+<p>Then in <code>exodus_model_template/app.py</code>:</p>
+<pre><code class="language-python"># ... snipped ...
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[&quot;http://localhost:3000&quot;], # Change this to &quot;http://localhost:{SOME_PORT}&quot;
+</code></pre>
+<h2 id="can-i-use-the-webapp-to-access-a-model-algorithm-thats-not-running-on-localhost"><a class="header" href="#can-i-use-the-webapp-to-access-a-model-algorithm-thats-not-running-on-localhost">Can I use the webapp to access a model algorithm that's not running on localhost?</a></h2>
+<p>This is currently not supported.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="publishing-your-model"><a class="header" href="#publishing-your-model">Publishing your model</a></h1>
+<p>Once you are done implementing the model, and all unit tests have passed, it is time to publish your work.</p>
+<p>Before you do it, make sure you have access to <a href="how_to/harbor.mobagel.com/exodus/">MoBagel's docker harbor</a>.</p>
+<p>Then run the command:</p>
+<pre><code class="language-bash">poe save
+</code></pre>
+<p>This builds the model algorithm into a docker image, pushes that image to MoBagel's Docker harbor, then saves it to a tarball.</p>
+<p>To incorporate it into the Exodus structure, simply copy the tarball to the main repo's <code>images/</code> directory, or set the main repo's configuration so that it pulls images from the MoBagel harbor.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modifying-the-model-algorithm"><a class="header" href="#modifying-the-model-algorithm">Modifying the model algorithm</a></h1>
+<p>When you're modifying your model algorithm, there are some scenarios where you might need to pay more attention:</p>
+<ul>
+<li>When you modified <code>ModelInfo</code> of a model algorithms that's been published already</li>
+<li>When you plan to publish a model algorithm that's been published in the past</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="migrating-the-modelinfo"><a class="header" href="#migrating-the-modelinfo">Migrating the ModelInfo</a></h1>
+<p>If you modify the <code>ModelInfo</code> of a model algorithm that's been published before, it is then your responsibility to make sure it is consistent between different versions. To ensure this, you need to write a migration script.</p>
+<h2 id="creating-a-migration-script"><a class="header" href="#creating-a-migration-script">Creating a migration script</a></h2>
+<pre><code class="language-bash">poetry run python scripts/make_migration_script.py [SCRIPT NAME]
+</code></pre>
+<p>Let's say the name is <code>foo</code>, this is what would happen:</p>
+<pre><code class="language-bash">❯ poetry run python scripts/make_migration_script.py foo
+Created: exodus_model_template/migrations/Migration_1646728080972_foo.py
+Updated: exodus_model_template/migrations/all_migrations.py
+
+</code></pre>
+<p>A migration script called <code>exodus_model_template/migrations/Migration_1646728080972_foo.py</code> has been generated.</p>
+<h2 id="implementing-the-migration-script"><a class="header" href="#implementing-the-migration-script">Implementing the migration script</a></h2>
+<p>Suppose your old <code>ModelInfo</code> is defined like this:</p>
+<pre><code class="language-python">class ModelInfo(BaseModel):
+    foo: str
+    bar: int
+</code></pre>
+<p>And you want to change it to this:</p>
+<pre><code class="language-python">class ModelInfo(BaseModel):
+    foo: str
+    bar: int
+    baz: str
+</code></pre>
+<p>where <code>baz</code> should be <code>foo</code> concatenated with a stringified <code>bar</code>.</p>
+<p>In the migration script, there are mainly two methods: <code>up</code> and <code>down</code>:</p>
+<pre><code class="language-python">class Migration(BaseMigration):
+    def __init__(self, timestamp: int = 1646728080972, name: str = &quot;foo&quot;) -&gt; None:
+        super().__init__(timestamp, name)
+
+    def up(self, collection: Collection) -&gt; None:
+        # TODO implement this method
+        pass
+
+    def down(self, collection: Collection) -&gt; None:
+        # TODO implement this method
+        pass
+</code></pre>
+<p>For <code>up</code>, you want to find all the <code>ModelInfo</code> instances that don't have a field called <code>baz</code>. An examplary implementation might be this:</p>
+<pre><code class="language-python">    def up(self, collection: Collection) -&gt; None:
+        for doc in collection.find({&quot;baz&quot;: {&quot;$exists&quot;: False}}):
+            collection.update_one(filter={&quot;_id&quot;: doc[&quot;_id&quot;]}, update={&quot;$set&quot;: {&quot;baz&quot;: doc[&quot;foo&quot;] + str(doc[&quot;bar&quot;])}})
+</code></pre>
+<p>As for <code>down</code>, you do the exact opposite and unset the <code>baz</code> field:</p>
+<pre><code class="language-python">    def down(self, collection: Collection) -&gt; None:
+        for doc in collection.find({&quot;baz&quot;: {&quot;$exists&quot;: True}}):
+            collection.update_one(filter={&quot;_id&quot;: doc[&quot;_id&quot;]}, update={&quot;$unset&quot;: {&quot;baz&quot;: &quot;&quot;}})
+</code></pre>
+<h2 id="invoking-the-migration-scripts"><a class="header" href="#invoking-the-migration-scripts">Invoking the migration scripts</a></h2>
+<p>It is Exodus main that will be in charge of migrating, however if you want to test your script manually, do this:</p>
+<pre><code class="language-bash">curl -X POST &quot;http://{MODEL ALGORITHM IP}/migrate&quot; -d '{&quot;action&quot;:&quot;up&quot;}' -H &quot;Content-Type: application/json&quot;
+</code></pre>
+<p>Change <code>&quot;up&quot;</code> to <code>&quot;down&quot;</code> if that's what you want to test.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bumping-the-version"><a class="header" href="#bumping-the-version">Bumping the version</a></h1>
+<p>When you're done modifying your model algorithm, you need to update the version before saving. Say you are now at version <code>1.2.3</code>, then you need to do this before saving it to harbor:</p>
+<pre><code class="language-bash">poetry version 1.2.4
+</code></pre>
+<p>This bumps the version to <code>1.2.4</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix-a-helper-functions-and-classes-in-exodusutils"><a class="header" href="#appendix-a-helper-functions-and-classes-in-exodusutils">Appendix A: Helper functions and classes in exodusutils</a></h1>
+<p>This section includes the descriptions for the helper classes and methods defined in <code>exodusutils</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="enums"><a class="header" href="#enums">Enums</a></h1>
+<h2 id="timeunit"><a class="header" href="#timeunit"><code>TimeUnit</code></a></h2>
+<p>The time unit that Exodus accepts. Has multiple helper functions:</p>
+<ul>
+<li><code>to_seasonality</code>: how many time units there is in a recurring pattern. For example, the seasonality of time unit <code>Month</code> would be <code>12</code>, since it's 12 months in a year.</li>
+<li><code>to_resample_rule</code>: returns a string literal, which will then be used by pandas to resample the dataset.</li>
+<li><code>to_time_delta_unit</code>: returns a string literal, which will then be used by pandas as time delta unit.</li>
+<li><code>format_datetime</code>: formats a <code>datetime</code> to <code>str</code> according to this <code>TimeUnit</code>.</li>
+<li><code>to_prediction_format</code>: returns the format required for prediction for this <code>TimeUnit</code>.</li>
+</ul>
+<h2 id="datatype"><a class="header" href="#datatype"><code>DataType</code></a></h2>
+<p>The data type for a column in a dataframe. Could be either one of the following:</p>
+<ul>
+<li><code>double</code>: the column is a numeric column.</li>
+<li><code>timestamp</code>: the column is a datetime column.</li>
+<li><code>string</code>: the column is a categorical column.</li>
+<li><code>id</code>: the column is for IDs. Not really used.</li>
+</ul>
+<p>It also comes with 2 helper methods:</p>
+<ul>
+<li><code>to_type</code>: returns the Python type for this <code>DataType</code>. For instance, <code>DataType.double.to_type() == float</code>.</li>
+<li><code>from_pandas</code>: turns the pandas type or array into a <code>DataType</code> instance. For example, <code>DataType.from_pandas(np.array([1,2,3,4,5])) == DataType.double</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="constants"><a class="header" href="#constants">Constants</a></h1>
+<h2 id="datetime_components_prefix"><a class="header" href="#datetime_components_prefix"><code>DATETIME_COMPONENTS_PREFIX </code></a></h2>
+<p>The prefixes for datetime component columns. For example, if a column named <code>foo</code> is a datetime column, then after <code>time_component_encoding</code>, we get the following new columns:</p>
+<ul>
+<li><code>YEAR_foo</code></li>
+<li><code>QUARTER_foo</code></li>
+<li><code>MONTH_foo</code></li>
+<li><code>WEEK_foo</code></li>
+<li><code>WEEKDAY_foo</code></li>
+<li><code>DAY_foo</code></li>
+<li><code>HOUR_foo</code></li>
+</ul>
+<h2 id="prediction_colname"><a class="header" href="#prediction_colname"><code>PREDICTION_COLNAME</code></a></h2>
+<p>The name of the prediction column. Essentially the string literal <code>&quot;prediction&quot;</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="schemas"><a class="header" href="#schemas">Schemas</a></h1>
+<h2 id="column"><a class="header" href="#column"><code>Column</code></a></h2>
+<p>Represents a column in the dataframe. Contains the name and the <code>DataType</code>.</p>
+<h2 id="attribute"><a class="header" href="#attribute"><code>Attribute</code></a></h2>
+<p>Represents a pair of a name (a <code>str</code>) and a value (a <code>float</code>). Used to represent a model algorithm's attribute.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="requests"><a class="header" href="#requests">Requests</a></h1>
+<h2 id="trainiidreqbody"><a class="header" href="#trainiidreqbody"><code>TrainIIDReqBody</code></a></h2>
+<p>Fields:</p>
+<ul>
+<li><code>training_data</code>: the raw bytes representing the training data. Is a CSV file as a sting. Should not be accessed directly.</li>
+<li><code>feature_types</code>: the columns in the training data.</li>
+<li><code>target</code>: the target <code>Column</code>.</li>
+<li><code>folds</code>: the number of folds during cross validation.</li>
+<li><code>validation_data</code>: the optional raw bytes representing the validation data. Should not be accessed directly.</li>
+<li><code>holdout_data</code>: the optional raw bytes representing the holdout data. Should not be accessed directly.</li>
+<li><code>fold_assignment_column</code>: an optional field denoting a column representing the fold that each row belongs to. If empty, <code>exodusutils</code> will cut the cv folds by taking the modulo by <code>folds</code> to the row indices.</li>
+</ul>
+<p>Methods:</p>
+<ul>
+<li><code>get_feature_names</code>: returns the names of the columns.</li>
+<li><code>get_training_df</code>: returns the parsed pandas <code>DataFrame</code> generated from the bytes in <code>training_data</code>. Note that the data types of the columns will correspond to the ones specified in <code>feature_types</code>.</li>
+<li><code>get_validation_data</code>: returns the parsed pandas <code>DataFrame</code> generated from the bytes in <code>validation_data</code>, or <code>None</code> if there's no validation data.</li>
+<li><code>get_holdout_data</code>: returns the parsed pandas <code>DataFrame</code> generated from the bytes in <code>holdout_data</code>, or <code>None</code> if there's no holdout data.</li>
+</ul>
+<h2 id="predictreqbody"><a class="header" href="#predictreqbody"><code>PredictReqBody</code></a></h2>
+<p>Fields:</p>
+<ul>
+<li><code>model_id</code>: the ID of the model you want to predict with.</li>
+<li><code>data</code>: the raw bytes representing the prediction data. Is a JSON string. Should not be accessed directly.</li>
+<li><code>threshold</code>: the threshold for classification predictions.</li>
+<li><code>keep_columns</code>: the columns to keep in the prediction results.</li>
+</ul>
+<p>Methods:</p>
+<ul>
+<li><code>get_prediction_df</code>: takes in a list of <code>Column</code>s, and returns a pandas <code>DataFrame</code> representing the prediction data. The list of <code>Column</code> should be stored into MongoDB once training is completed.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scores"><a class="header" href="#scores">Scores</a></h1>
+<p>There are 2 types of scores: <code>RegressionScores</code> and <code>ClassificationScores</code>. Instead of using them directly, you should use the class methods of these two classes:</p>
+<ul>
+<li>For <code>RegressionScores</code>, create it via <code>RegressionScores.get_scores</code></li>
+<li>For <code>ClassificationScores</code>, create it via <code>ClassificationScores.get_scores</code></li>
+</ul>
+<h2 id="regressionscores"><a class="header" href="#regressionscores"><code>RegressionScores</code></a></h2>
+<p>Contains the following metrics:</p>
+<ul>
+<li><code>mse</code> (mean square error)</li>
+<li><code>rmse</code> (root mean square error)</li>
+<li><code>rmsle</code> (root mean square logarithmic error)</li>
+<li><code>mae</code> (mean absolute error)</li>
+<li><code>r2</code> (<a href="https://www.investopedia.com/terms/r/r-squared.asp">r squared</a>)</li>
+<li><code>deviance</code> (<a href="https://en.wikipedia.org/wiki/Deviance_(statistics)">deviance</a>, but here it's the same as <code>r2</code>)</li>
+<li><code>mape</code> (mean absolute percentage error)</li>
+<li><code>wmape</code> (weighted mean absolute percentage error)</li>
+</ul>
+<h2 id="classificationscores"><a class="header" href="#classificationscores"><code>ClassificationScores</code></a></h2>
+<p>Could be either <code>BinomialScores</code> or <code>MultinomialScores</code>.</p>
+<h3 id="binomialscores"><a class="header" href="#binomialscores"><code>BinomialScores</code></a></h3>
+<p>Contains the following metrics:</p>
+<ul>
+<li><code>logloss</code></li>
+<li><code>mean_per_class_error</code> (mean per class error)</li>
+<li><code>misclassification</code></li>
+<li><code>auc</code> (area under curve)</li>
+<li><code>lift_top_group</code></li>
+</ul>
+<h3 id="multinomialscores"><a class="header" href="#multinomialscores"><code>MultinomialScores</code></a></h3>
+<p>Contains the following metrics:</p>
+<ul>
+<li><code>logloss</code></li>
+<li><code>mean_per_class_error</code> (mean per class error)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+<p>Instead throwing <code>ValueError</code> or <code>HTTPException</code>, you can use the following:</p>
+<p>If the input is malformed:</p>
+<ul>
+<li><code>ExodusBadRequest</code></li>
+<li><code>ExodusForbidden</code></li>
+<li><code>ExodusMethodNotAllowed</code></li>
+<li><code>ExodusNotFound</code></li>
+</ul>
+<p>If the model algorithm is supposed to fail, throw <code>ExodusError</code> instead of other exceptions.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="frames"><a class="header" href="#frames">Frames</a></h1>
+<p>See <code>Appendix B</code> for more information.</p>
+<h2 id="trainframes"><a class="header" href="#trainframes"><code>TrainFrames</code></a></h2>
+<p>Contains the following fields:</p>
+<ul>
+<li><code>train</code>: the training set</li>
+<li><code>validation</code>: the validation set</li>
+<li><code>test</code>: the testing set</li>
+</ul>
+<p>Use the <code>iid_without_test</code> class method to create a <code>TrainFrames</code> instance without the testing set.</p>
+<h2 id="cvframes"><a class="header" href="#cvframes"><code>CVFrames</code></a></h2>
+<p>Contains a list of <code>TrainFrames</code>.</p>
+<p>Use the <code>iid</code> class method to create an instance of <code>CVFrames</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="feature-engineering-1"><a class="header" href="#feature-engineering-1">Feature engineering</a></h1>
+<ul>
+<li><code>one_hot_encoding</code></li>
+<li><code>label_encoding</code></li>
+<li><code>time_component_encoding</code></li>
+</ul>
+<p>See previous chapters for explanation.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="frame-manipulation"><a class="header" href="#frame-manipulation">Frame manipulation</a></h1>
+<p>Contains methods that are applying feature engineering artifacts to the prediction dataframe.</p>
+<ul>
+<li><code>apply_label_encoders</code></li>
+<li><code>apply_one_hot_encoding</code></li>
+</ul>
+<p>Also contains these helper methods:</p>
+<ul>
+<li><code>to_numeric_features_df</code>: extracts the numeric features from the dataframe, and returns them as a new dataframe.</li>
+<li><code>remove_invalid_values</code>: removes the invalid values from the dataframe.</li>
+<li><code>remove_datetime_columns</code>: removes all columns of dtype <code>datetime64</code>.</li>
+<li><code>fill_nan_with_mode</code>: fills the <code>NaN</code> cells in each numeric column with the most frequent value (aka <code>mode</code>) of that column.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
+<ul>
+<li><code>closest_string</code>: given a list of strings and one reference string, find out which string is the closest to the reference in the list.</li>
+<li><code>remove_invalid_targets</code>: returns a new dataframe that does not have <code>NaN</code> in target column. Does not modify the original dataframe.</li>
+<li><code>format_datetime_column_with_unit</code>: turns date column into <code>str</code> based on given <code>time_unit</code>. Will modify the original <code>df</code>.</li>
+<li><code>are_valid_values</code>: whether there exists a non-<code>np.nan</code> value in <code>values</code>. Used to test if a fold is useless - if all actual values are <code>np.nan</code>, then the fold is not usable.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-update-exodusutils"><a class="header" href="#how-to-update-exodusutils">How to update exodusutils</a></h1>
+<pre><code class="language-bash">poetry add exodusutils@latest    # Or to a specific version
+</code></pre>
+<p>If this command does not update the version for <code>exodusutils</code>, it's probably because the <code>poetry</code> cache still contains the <code>exodusutils</code> on you current version. Normally this can be solved by waiting for 15 minutes or so.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix-b-how-cross-validation-scores-are-calculated"><a class="header" href="#appendix-b-how-cross-validation-scores-are-calculated">Appendix B: How cross validation scores are calculated</a></h1>
+<p>To create the frames for cross validation, <code>exodusutils</code> library provides a helper class called <code>CVFrames</code>:</p>
+<pre><code class="language-python">frames: List[TrainFrame] = CVFrames(df, nfolds, validation_df).frames
+</code></pre>
+<p>Here, <code>df</code> is the training dataframe, <code>nfolds</code> is the number of folds you want for the cross validation, and <code>validation_df</code> represents the validation dataframe, which is optional.</p>
+<p>In the return type, a <code>TrainFrame</code> is essentially a 3-tuple comprised of three pandas <code>DataFrame</code>s. The first is the dataframe that will be used to train the cross validation model, the second used as the validation set during training (this is the <code>validation_df</code> argument you passed to <code>CVFrames</code>), the third as the testing set for calculating the cross validation score.</p>
+<p>Note that a cross validation fold is invalid if it does not have any row in its testing set - otherwise it is not possible to calculate the fold's scores! This can happen if there are not enough rows in the dataframe. In this instance, the program will raise an exception telling you your data is invalid.</p>
+<h2 id="how-does-cvframes-cut-the-cross-validation-frames"><a class="header" href="#how-does-cvframes-cut-the-cross-validation-frames">How does <code>CVFrames</code> cut the cross validation frames?</a></h2>
+<p>The way we cut cross validation range is described as follows:</p>
+<ol>
+<li>We know each of the rows in the dataframe has an index attached to it.</li>
+<li>We split the indices into <code>nfolds</code> sets. Suppose there are 20 rows in the dataframe, and <code>nfolds</code> is 5, we calculate <code>row_index % fold</code> to see which rows goes to which fold. To demonstrate this, below is an example on how we split the indices:
+<pre><code class="language-python">fold_indices = [
+  [0, 5, 10, 15],
+  [1, 6, 11, 16],
+  [2, 7, 12, 17],
+  [3, 8, 13, 18],
+  [4, 9, 14, 19]
+]
+</code></pre>
+</li>
+<li>Now that we have <code>fold_indices</code>, a list of 5 sublists, each indicating a set of indices. For the first cross validation fold, we take the rows in the first sublist as the testing set, the rest will be either be in training set or validation set.</li>
+<li>Repeat this process for the rest of the folds.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix-c-how-to-change-mongodb-settings"><a class="header" href="#appendix-c-how-to-change-mongodb-settings">Appendix C: How to change MongoDB settings</a></h1>
+<h2 id="changing-mongodb-service-port"><a class="header" href="#changing-mongodb-service-port">Changing MongoDB service port</a></h2>
+<p>By default, the MongoDB service is reachable via port <code>27018</code>. If you want to change that to something else, say <code>9487</code>, modify the <code>docker-compose.yml</code>:</p>
+<pre><code class="language-yml">services:
+  mongo:
+    restart: always
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
+    ports:
+      - &quot;27018:27017&quot; # Change this to &quot;9487:27017&quot;
+</code></pre>
+<p>If you want to run tests using your own port, modify <code>tests/__init__.py</code>, and change it from <code>27018</code> to <code>9487</code>.</p>
+<h2 id="changing-other-mongodb-configurations"><a class="header" href="#changing-other-mongodb-configurations">Changing other MongoDB configurations</a></h2>
+<p>All of the configuration values are in <code>config.ini</code>.</p>
+<h2 id="encryption"><a class="header" href="#encryption">Encryption</a></h2>
+<p>In order to properly encrypt things, several things are required:</p>
+<ul>
+<li><code>encrypted</code> field in <code>config.ini</code> should be <code>true</code></li>
+<li><code>encryption_key</code> in <code>config.ini</code> should be a 96 bytes long string</li>
+</ul>
+<p>The encryption key will be stored in MongoDB, in a collection named <code>__keyVault</code> in the database specified in <code>config.ini</code>. There should be none or only one document in the collection.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix-d-how-to-view-and-use-the-api-docs"><a class="header" href="#appendix-d-how-to-view-and-use-the-api-docs">Appendix D: How to view and use the API docs</a></h1>
+<p>Visit <code>http://{MODEL ALGORTIHM SERVICE IP}/docs</code>:</p>
+<p><img src="images/api_docs_4.png" alt="" /></p>
+<h2 id="sending-requests-to-the-endpoints"><a class="header" href="#sending-requests-to-the-endpoints">Sending requests to the endpoints</a></h2>
+<p>You can expand any of the endpoints, and try sending requests to them like so:</p>
+<p><img src="images/api_docs_1.png" alt="" /></p>
+<p><img src="images/api_docs_2.png" alt="" /></p>
+<p><img src="images/api_docs_3.png" alt="" /></p>
+<h2 id="inspecting-the-expected-schema-of-an-endpoint"><a class="header" href="#inspecting-the-expected-schema-of-an-endpoint">Inspecting the expected schema of an endpoint</a></h2>
+<p>If you want to see the required schema for a certain endpoint, expand it and click <code>Schema</code>:</p>
+<p><img src="images/api_docs_5.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
